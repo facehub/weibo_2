@@ -90,11 +90,11 @@ module WeiboOAuth2
         
         #write interfaces
         def pois_create(title, lat, long, city, opt={})
-          hashie post("place/pois/create.json", :params => {:title => title, :lat => lat, :long => long, :city => city}.merge(opt))
+          hashie post("place/pois/create.json", :body => {:title => title, :lat => lat, :long => long, :city => city}.merge(opt))
         end
         
         def pois_add_checkin(poiid, status, opt={})
-          hashie post("place/pois/add_checkin.json", :params => {:poiid => poiid, :status => status}.merge(opt))
+          hashie post("place/pois/add_checkin.json", :body => {:poiid => poiid, :status => status}.merge(opt))
         end
         
         def pois_add_photo(poiid, status, pic, opt={})
@@ -103,19 +103,19 @@ module WeiboOAuth2
         end
         
         def pois_add_tip(poiid, status, opt={})
-          hashie post("place/pois/add_tip.json", :params => {:poiid => poiid, :status => status}.merge(opt))
+          hashie post("place/pois/add_tip.json", :body => {:poiid => poiid, :status => status}.merge(opt))
         end
         
         def pois_add_todo(poiid, status, opt={})
-          hashie post("place/pois/create.json", :params => {:poiid => poiid, :status => status}.merge(opt))
+          hashie post("place/pois/create.json", :body => {:poiid => poiid, :status => status}.merge(opt))
         end
         
         def nearby_users_create(lat, long, opt={})
-          hashie post("place/nearby_users/create.json", :params => {:lat => lat, :long => long}.merge(opt))
+          hashie post("place/nearby_users/create.json", :body => {:lat => lat, :long => long}.merge(opt))
         end
         
         def nearby_users_destroy(opt={})
-          hashie post("place/nearby_users/destroy.json", :params => opt)
+          hashie post("place/nearby_users/destroy.json", :body => opt)
         end
       end
     end

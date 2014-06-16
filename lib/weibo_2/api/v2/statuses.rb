@@ -86,29 +86,28 @@ module WeiboOAuth2
         
         #write interfaces
         def repost(id, opt={})
-          hashie post("statuses/repost.json", :params => {"id" => id}.merge(opt))
+          hashie post("statuses/repost.json", :body => {"id" => id}.merge(opt))
         end
         
         def destroy(id)
-          hashie post("statuses/destroy.json", :params => {"id" => id})
+          hashie post("statuses/destroy.json", :body => {"id" => id})
         end
         
         def update(status, opt={})
-          hashie post("statuses/update.json", :params => {"status" => status}.merge(opt))
+          hashie post("statuses/update.json", :body => {"status" => status}.merge(opt))
         end
         
-  
         def upload(status, pic, opt={})
           multipart = build_multipart_bodies({"status" => status, "pic" => pic}, opt)
           hashie post("statuses/upload.json", :headers => multipart[:headers], :body => multipart[:body])
         end
         
         def upload_url_text(opt={})
-          hashie post("statuses/upload_url_text.json", :params => opt)
+          hashie post("statuses/upload_url_text.json", :body => opt)
         end
         
         def emotions(opt={})
-          hashie get("emotions.json", :params => opt)
+          hashie get("emotions.json", :body => opt)
         end
             
       end

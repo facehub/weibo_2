@@ -19,15 +19,15 @@ module WeiboOAuth2
         
         #write interfaces
         def create(tags, opt={})
-          hashie post("tags/create.json", :params => {:tags => tags}.merge(opt))
+          hashie post("tags/create.json", :body => {:tags => tags}.merge(opt))
         end
         
         def destroy(tag_id, opt={})
-          hashie post("tags/destroy.json", :params => {:tag_id => tag_id}.merge(opt))
+          hashie post("tags/destroy.json", :body => {:tag_id => tag_id}.merge(opt))
         end
         
         def destroy_batch(ids, opt={})
-          hashie post("tags/destroy_batch.json", :params => {:ids => ids}.merge(opt))
+          hashie post("tags/destroy_batch.json", :body => {:ids => ids}.merge(opt))
         end
         
       end

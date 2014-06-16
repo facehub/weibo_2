@@ -47,15 +47,15 @@ module WeiboOAuth2
         
         #write interfaces
         def create(opt={})
-          hashie post("friendships/create.json", :params => opt)
+          hashie post("friendships/create.json", :body => opt)
         end
         
         def destroy(opt={})
-          hashie post("friendships/destroy.json", :params => opt)
+          hashie post("friendships/destroy.json", :body => opt)
         end
         
         def remark_update(uid, remark, opt={})
-          hashie post("friendships/remark/update.json", :params => {:uid => uid, :remark => remark}.merge(opt))
+          hashie post("friendships/remark/update.json", :body => {:uid => uid, :remark => remark}.merge(opt))
         end
         
       end

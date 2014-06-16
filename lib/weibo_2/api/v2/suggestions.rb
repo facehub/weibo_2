@@ -36,7 +36,7 @@ module WeiboOAuth2
         
         #write interfaces
         def users_not_interested(uid, opt={})
-          hashie post("suggestions/users/not_interested.json", :params => {:uid => uid}.merge(opt))
+          hashie post("suggestions/users/not_interested.json", :body => {:uid => uid}.merge(opt))
         end
         
       end
