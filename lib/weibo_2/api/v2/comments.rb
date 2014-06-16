@@ -29,20 +29,20 @@ module WeiboOAuth2
         end
         
         #write interfaces
-        def create(comment, id, opt={})
-          hashie post("comments/create.json", :body => {:comment => comment, :id => id}.merge(opt))
+        def create(id, comment, opt={})
+          hashie post("statuses/comment.json", :body => {:id => id, :comment => comment}.merge(opt))
         end
         
-        def destroy(cid, opt={})
-          hashie post("comments/destroy.json", :body => {:cid => cid}.merge(opt))
+        def destroy(id, opt={})
+          hashie post("statuses/comment_destroy.json", :body => {:id => id}.merge(opt))
         end
         
         def destroy_batch(cids, opt={})
-          hashie post("comments/destroy_batch.json", :body => {:cids => cids}.merge(opt))
+          hashie post("statuses/comment/destroy_batch.json", :body => {:ids => ids}.merge(opt))
         end
         
         def reply(cid, id, comment, opt={})
-          hashie post("comments/reply.json", :body => {:cid => cid, :id => id, :comment => comment}.merge(opt))
+          hashie post("statuses/reply.json", :body => {:cid => cid, :id => id, :comment => comment}.merge(opt))
         end
                
       end
