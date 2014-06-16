@@ -30,27 +30,27 @@ module WeiboOAuth2
         
         #write interfaces
         def create(id, opt={})
-          hashie post("favorites/create.json", :params => {:id => id}.merge(opt))
+          hashie post("favorites/create.json", :body => {:id => id}.merge(opt))
         end
         
         def destroy(id, opt={})
-          hashie post("favorites/destroy.json", :params => {:id => id}.merge(opt))
+          hashie post("favorites/destroy.json", :body => {:id => id}.merge(opt))
         end
         
         def destroy_batch(ids, opt={})
-          hashie post("favorites/destroy_batch.json", :params => {:ids => ids}.merge(opt))
+          hashie post("favorites/destroy_batch.json", :body => {:ids => ids}.merge(opt))
         end
         
         def tags_update(id, tags, opt={})
-          hashie post("favorites/tags/update.json", :params => {:id => id, :tags => CGI::escape(tags)}.merge(opt))
+          hashie post("favorites/tags/update.json", :body => {:id => id, :tags => CGI::escape(tags)}.merge(opt))
         end
         
         def tags_update_batch(tid, tag, opt={})
-          hashie post("favorites/tags/update_batch.json", :params => {:tid => tid, :tag => CGI::escape(tag)}.merge(opt))
+          hashie post("favorites/tags/update_batch.json", :body => {:tid => tid, :tag => CGI::escape(tag)}.merge(opt))
         end
         
         def tags_destroy_batch(tid, opt={})
-          hashie post("favorites/tags/destroy_batch.json", :params => {:tid => tid}.merge(opt))
+          hashie post("favorites/tags/destroy_batch.json", :body => {:tid => tid}.merge(opt))
         end
         
       end

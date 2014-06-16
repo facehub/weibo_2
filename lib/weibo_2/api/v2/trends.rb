@@ -26,11 +26,11 @@ module WeiboOAuth2
         
         #write interfaces
         def follow(trend_name, opt={})
-          hashie post("trends/follow.json", :params => {:trend_name => trend_name}.merge(opt))
+          hashie post("trends/follow.json", :body => {:trend_name => trend_name}.merge(opt))
         end
         
         def destroy(trend_id, opt={})
-          hashie post("trends/destroy.json", :params => {:trend_id => trend_id}.merge(opt))
+          hashie post("trends/destroy.json", :body => {:trend_id => trend_id}.merge(opt))
         end
         
       end

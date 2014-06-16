@@ -68,7 +68,7 @@ module WeiboOAuth2
         
         #write interfaces
         def pois_add(srcid, name, address, city_name, category, longitude, latitude, opt={})
-          hashie post("location/pois/add.json", :params => {:srcid => srcid,
+          hashie post("location/pois/add.json", :body => {:srcid => srcid,
                                                             :name => name,
                                                             :address => address,
                                                             :city_name => city_name,
