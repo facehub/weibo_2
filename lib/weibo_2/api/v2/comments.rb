@@ -37,7 +37,7 @@ module WeiboOAuth2
           hashie post("statuses/comment_destroy.json", :body => {:id => id}.merge(opt))
         end
         
-        def destroy_batch(cids, opt={})
+        def destroy_batch(ids, opt={})
           hashie post("statuses/comment/destroy_batch.json", :body => {:ids => ids}.merge(opt))
         end
         
