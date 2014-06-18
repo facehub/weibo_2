@@ -4,7 +4,7 @@ module WeiboOAuth2
       class DirectMessages < Base
       
         #read interfaces
-        def inbox(id, opt={})
+        def inbox(opt={})
           hashie get("direct_messages.json", :params => opt)
         end
         

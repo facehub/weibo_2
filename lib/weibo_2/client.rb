@@ -117,6 +117,10 @@ module WeiboOAuth2
     def location
       @location ||= WeiboOAuth2::Api::V2::Location.new(@access_token) if @access_token
     end
+
+    def direct_messages
+      @direct_messages ||= WeiboOAuth2::Api::V2::DirectMessages.new(@access_token) if @access_token
+    end
     
   end 
 end

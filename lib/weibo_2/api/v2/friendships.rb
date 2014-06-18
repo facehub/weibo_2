@@ -4,10 +4,22 @@ module WeiboOAuth2
       class Friendships < Base
               
         #read interfaces
-        def friends(opt={})
-          hashie get("friendships/friends.json", :params => opt)
+        def friends(uid, opt={})
+          hashie get("friendships/friends.json", :params => {:uid => uid}.merge(opt))
         end
         
+        def friends_ids(uid, opt={})
+          hashie get("friendships/friends/ids.json", :params => {:uid => uid}.merge(opt))
+        end
+        
+        def followers(uid, opt={})
+          hashie get("friendships/followers.json", :params => {:uid => uid}.merge(opt))
+        end
+        
+        def followers_ids(uid, opt={})
+          hashie get("friendships/followers/ids.json", :params => {:uid => uid}.merge(opt))
+        end
+
         def friends_in_common(uid, opt={})
           hashie get("friendships/friends/in_common.json", :params => {:uid => uid}.merge(opt))
         end
@@ -18,18 +30,6 @@ module WeiboOAuth2
         
         def friends_bilateral_ids(uid, opt={})
           hashie get("friendships/friends/bilateral/ids.json", :params => {:uid => uid}.merge(opt))
-        end
-        
-        def friends_ids(opt={})
-          hashie get("friendships/friends/ids.json", :params => opt)
-        end
-        
-        def followers(opt={})
-          hashie get("friendships/followers.json", :params => opt)
-        end
-        
-        def followers_ids(opt={})
-          hashie get("friendships/followers/ids.json", :params => opt)
         end
         
         def followers_active(uid, opt={})
@@ -44,18 +44,13 @@ module WeiboOAuth2
           hashie get("friendships/show.json", :params => opt)
         end
         
-        
         #write interfaces
-        def create(opt={})
-          hashie post("friendships/create.json", :body => opt)
+        def create(screen_name, opt={})
+          hashie post("friendships/create.json", :body => {:screen_name => screen_name}.merge(opt))
         end
         
-        def destroy(opt={})
-          hashie post("friendships/destroy.json", :body => opt)
-        end
-        
-        def remark_update(uid, remark, opt={})
-          hashie post("friendships/remark/update.json", :body => {:uid => uid, :remark => remark}.merge(opt))
+        def destroy(screen_name, opt={})
+          hashie post("friendships/destroy.json", :body => {:screen_name => screen_name}.merge(opt))
         end
         
       end
