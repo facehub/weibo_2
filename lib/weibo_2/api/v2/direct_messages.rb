@@ -4,25 +4,12 @@ module WeiboOAuth2
       class DirectMessages < Base
       
         #read interfaces
-        def inbox(opt={})
-          hashie get("direct_messages.json", :params => opt)
+        def receive(opt={})
+          hashie get("direct_messages/fans_service/receive.json", :params => opt)
         end
-        
-        def sent(opt={})
-          hashie get("direct_messages/sent.json", :params => opt)
-        end
-        
-        #write interfaces
-        def create(user_id, message, opt={})
-          hashie post("direct_messages/new.json", :body => {:user_id => user_id, :text => message}.merge(opt))
-        end
-        
-        def destroy(id, opt={})
-          hashie post("direct_messages/destroy.json", :body => {:id => id}.merge(opt))
-        end
-        
-        def destroy_batch(ids, opt={})
-          hashie post("direct_messages/destroy_batch.json", :body => {:ids => ids}.merge(opt))
+
+        def conversation(uid, opt={})
+          hashie get("direct_messages/fans_service/conversation.json", params: {uid: uid}.merge(opt))
         end
                
       end
