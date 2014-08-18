@@ -5,7 +5,7 @@ module WeiboOAuth2
       
         #read interfaces
         def receive(opt={})
-          hashie get("direct_messages/fans_service/receive.json", :params => opt)
+          hashie get("direct_messages/fans_service/receive.json", :params => opt)  
         end
 
         def conversation(uid, opt={})
