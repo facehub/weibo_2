@@ -10,8 +10,8 @@ module WeiboOAuth2
 
         #write interfaces
         def reply(id, comment, opt={})
-          data = "{'text': '#{comment}'}"
-          hashie post("messages/reply.json", body: {type: 'text', receiver_id: id, data: URI::encode(data)}.merge(opt))
+          data = "{\"text\":\"#{comment}\"}"
+          hashie post("messages/reply.json", body: {type: "text", receiver_id: id, data: data}.merge(opt).to_query)
         end
                
       end
