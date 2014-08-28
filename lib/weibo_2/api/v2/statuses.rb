@@ -52,8 +52,8 @@ module WeiboOAuth2
           hashie get("statuses/bilateral_timeline.json", :params => opt)
         end
         
-        def show(opt={})
-          hashie get("statuses/show.json", :params => opt)
+        def show(id, opt={})
+          hashie get("statuses/show.json", :params => {:id => id}.merge(opt))
         end
         
         def querymid(opt={})
